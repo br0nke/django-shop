@@ -1,0 +1,58 @@
+<!DOCTYPE html>{% load static i18n %}{% get_current_language as LANGUAGE_CODE %}{% get_available_languages as LANGUAGES %}
+{% load crispy_forms_tags %}
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+    <link rel="stylesheet" href="{% static 'bootstrap4/css/bootstrap.min.css' %}">
+    <script src="{% static 'bootstrap4/js/bootstrap.bundle.min.js' %}"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}MEGA-STOK-SHOP{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <span class="logo">MEGA-STOK-SHOP</span>
+        <ul class="nav">
+            <li><a href="{% url "index" %}">{% trans "dashboard"|capfirst %}</a></li>
+            <li><a href="{% url "listing_list" %}">{% trans "listings"|capfirst %}</a></li>
+            <li><a href="{% url "listing_create" %}">{% trans "create listing"|capfirst %}</a></li>
+        </ul>
+        <span class="spacer"></span>
+        <ul class="nav nav-user">
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'user_detail_current' %}">{{ user }}</a></li>
+                {% if user.is_superuser or user.is_staff %}
+                    <li><a href="{% url 'admin:index' %}">{% trans "admin"|capfirst %}</a></li>
+                {% endif %}
+                <li><form method="post" action="{% url "logout" %}">{% csrf_token %}<button type="submit">{% trans "log out"|capfirst %}</button></form></li>
+            {% else %}
+                <li><a href="{% url 'login' %}">{% trans "log in"|capfirst %}</a></li>
+                <li><a href="{% url 'signup' %}">{% trans "sign up"|capfirst %}</a></li>
+            {% endif %}
+        </ul>
+        <form action="{% url "set_language" %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ redirect_to }}">
+            <select class="laguage" name="language" onchange="this.form.submit();">
+                {% for language in LANGUAGES %}
+                    <option value="{{ language.0 }}" {% if language.0 == LANGUAGE_CODE %}selected{% endif %}>
+                        {{ language.1 }}
+                    </option>
+                {% endfor %}
+            </select>
+        </form>
+    </header>
+    <section class="messages">
+        {% for message in messages %}
+            <p class="message message-{{ message.tags }}">{{ message }}</p>
+        {% endfor %}
+    </section>
+    <main>{% block content %}{% endblock content %}</main>
+    <footer>
+        {% block footer %}{% endblock footer %}
+        <p>&copy; 2024 PTU20
+            <a style="float:right;" href="https://discord.gg/ywbbZPcY">{% trans "Join our Community in Discord!" %}</a>
+        </p>
+    </footer>
+</body>
+</html>
