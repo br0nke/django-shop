@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load i18n %} {% load crispy_forms_tags %}
+{% block title %}{{ block.super }} list{% endblock title %}
+{% block content %}
+<h1>{% trans "listings"|capfirst %}</h1>
+<div class="toolbar">
+  <form method="get" action="{{ request.path }}">
+    <input type="text" name="search" placeholder="Search listings..." onchange="this.form.submit();">
+  </form>
+</div>
+<div class="container">
+  <div class="row">
+    {% for listing in listing_list %}
+      <div class="col-md-4">
+        </div>
+    {% endfor %}
+  </div>
+</div>
+<div class="container">
+    <div class="row">
+      {% for listing in listing_list %}
+        <div class="col-md-4">
+          <a href="{% url "listing_detail" listing.pk %}">
+            <img
+              src="{{ listing.image.url }}"
+              alt="{{ listing.title }}"
+              style="object-fit: cover; width: 300px; height: 300px;"
+            />
+            <div class="content-section">
+              {{ listing.title }} - {{ listing.category }} - &pound;{{ listing.price }}
+            </div>
+          </a>
+          <br>
+        </div>
+  
+        {% if forloop.counter|divisibleby:4 %}
+         <div class="row"></div>
+        {% endif %}
+      {% endfor %}
+    </div>
+</div>            
+{% endblock content %}
