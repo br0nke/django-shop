@@ -4,8 +4,8 @@ from django.utils.translation import gettext_lazy as _
 
 
 class StockListingAdmin(admin.ModelAdmin):
-    list_display = ('title', 'owner', 'price', 'phone', 'category', 'is_sold')
-    list_filter = ['is_sold', 'owner', 'created_at', 'category']
+    list_display = ('title', 'user', 'price', 'phone', 'category', 'is_sold')
+    list_filter = ['is_sold', 'user', 'created_at', 'category']
 
     def total_listings(self, obj: models.StockListing):
         return obj.listings.count()

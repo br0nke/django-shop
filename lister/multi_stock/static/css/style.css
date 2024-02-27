@@ -8,11 +8,13 @@ body {
     min-height: 100vh;
 }
 
+
 header {
     background-color: #999999;
     display: flex;
     flex-direction: row;
     align-items: center;
+    opacity: 0.6;
 }
 
 header .logo {
@@ -75,6 +77,8 @@ h1, h2, h3, h4, h5, h6 {
     border-color: 1px solid #888888;
     padding: 0.5rem;
     margin: 1rem 0;
+    opacity: 0.6;
+    text-align: center;
 }
 
 h1:first-child, h2:first-child, h3:first-child, 
@@ -85,6 +89,15 @@ h4:first-child, h5:first-child, h6:first-child {
 p, main ul {
     padding: 0 0.5rem;
     margin: 1rem 0;
+    outline: #77bbff;
+    outline-width: thin;
+    text-decoration: underline;
+    font-weight: 700;
+    color: rgb(127, 153, 255);
+}
+
+main a {
+    color: rgb(50, 156, 255);
 }
 
 main ul li {
@@ -93,6 +106,10 @@ main ul li {
 
 main ul li.list-table-header {
     padding-bottom: 0.5rem;
+}
+
+footer {
+    opacity: 0.6;
 }
 
 footer p {

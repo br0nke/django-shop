@@ -24,10 +24,11 @@
             <img
               src="{{ listing.image.url }}"
               alt="{{ listing.title }}"
-              style="object-fit: cover; width: 300px; height: 300px;"
+              style="object-fit: cover; width: 340px; height: 300px;"
             />
-            <div class="content-section">
-              {{ listing.title }} - {{ listing.category }} - &pound;{{ listing.price }}
+            <div class="content-section" style="text-align: center; color: rgb(127, 153, 255);">
+              {{ listing.title }} - {{ listing.category }} - &euro;{{ listing.price }} - 
+              Listed: {{ listing.created_at|date:"d-m" }}
             </div>
           </a>
           <br>
