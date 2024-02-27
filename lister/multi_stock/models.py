@@ -15,8 +15,8 @@ CATEGORIES = (
 
 
 class StockListing(models.Model):
-    owner = models.ForeignKey(User, on_delete=models.CASCADE,
-        verbose_name=_("owner"), 
+    user = models.ForeignKey(User, on_delete=models.CASCADE,
+        verbose_name=_("user"), 
         related_name='listings',
     )
     title = models.CharField(max_length=100, db_index=True)
