@@ -3,6 +3,8 @@
 {% block content %}
     <h1>{% trans "Welcome!"|capfirst %}</h1>
     <h2>{% trans "Our Latest News:"|capfirst %}</h2>
-    <p>{% trans "total users on platform"|capfirst %}: {{ users_count }} !</p>
-    <p>{% trans "available listings for sale"|capfirst %}: {{ listings_count }} !</p>
+    <div class="info-container">
+        <p>{% trans "total users on platform"|capfirst %}: {{ users_count }} !</p>
+        <p>{% trans "available listings for sale"|capfirst %}: {{ listing_count }} !</p>
+    </div>
 {% endblock content %}

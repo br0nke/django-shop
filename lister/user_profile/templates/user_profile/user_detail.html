@@ -3,14 +3,14 @@
 {% block content %}
 <h1>User: {{ object.username }}</h1>
     <div class="profile-image-container">
-  <img
-    src="{{ user.profile.picture.url }}"
-    alt="'picture here'"
-    class="rounded-circle profile-img"
-    style="width: 200; height: auto;"
-  />
-</div>
-  <p>{{ object.first_name }} {{ object.last_name }}</p>
+      <img
+        src="{{ user.profile.picture.url }}"
+        alt="'picture here'"
+        class="rounded-circle profile-img"
+        style="width: 200; height: auto;"
+      />
+    </div>
+  <p>Full name: {{ object.first_name }} {{ object.last_name }}</p>
   <p>{% trans "e-mail"|capfirst %}: {{ object.email }}</p>
   {% if object == request.user %}
     <p><a class="button" href="{% url "user_update" %}">{% trans "edit profile data" %}</a></p>

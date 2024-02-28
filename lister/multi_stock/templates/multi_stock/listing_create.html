@@ -2,9 +2,11 @@
 {% block title %}{% trans "create listing"|capfirst %} {{ block.super }}{% endblock title %}
 {% block content %}
     <h1>Create Stock Listing</h1>
+<div class="form-container">
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Create Listing</button>
     </form>
+</div>
 {% endblock content %}
