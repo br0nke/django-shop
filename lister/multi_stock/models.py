@@ -10,7 +10,8 @@ CATEGORIES = (
     ('FURNITURE', 'Furniture'),
     ('TOYS', 'Toys'),
     ('MIXED GOODS', 'Mixed Goods'),
-    ('RETURNS', 'Returns')
+    ('RETURNS', 'Returns'),
+    ('CAR PARTS', 'Car Parts'),
 )
 
 

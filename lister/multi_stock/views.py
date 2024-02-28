@@ -4,6 +4,7 @@ from .forms import StockListingForm
 from django.http import HttpRequest, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
+from django.db.models import Q
 
 User = get_user_model()
 
@@ -37,13 +38,15 @@ def listing_detail(request: HttpRequest, pk) -> HttpResponse:
         'listing': get_object_or_404(models.StockListing, pk=pk),
     })
 
-def listing_search(request: HttpRequest, pk) -> HttpResponse:
+def listing_search(request: HttpRequest) -> HttpResponse:
     search_term = request.GET.get('search', '')
     listing_list = models.StockListing.objects.all()
+    print(f"Search term: {search_term}")
     if search_term:
         listing_list = listing_list.filter(
-            Q(title__icontains=search_term) | Q(category__icontains=search_term)
+            Q(title__icontains=search_term) | 
+            Q(category__icontains=search_term)
         )
 
     context = {'listing_search': listing_list}
-    return render(request, 'listing_list.html', context)
+    return render(request, 'listing_search.html', context)

@@ -1,13 +1,14 @@
 body {
-    background-color: #cccccc;
-    font-family: sans-serif;
+    background-image: url(../images/background.jpg);
+    background-color: #cccccca2;
+    background-size: cover;
+    min-height: 100vh;
+    font-family: Verdana;
     font-size: 16px;
-    display: flex;
     flex-direction: column;
     margin: 0; padding: 0;
-    min-height: 100vh;
+    display: flex;
 }
-
 
 header {
     background-color: #999999;
@@ -48,13 +49,17 @@ header ul.nav li a, header ul.nav form button {
 
 header ul.nav li a:hover, header ul.nav form button:hover {
     background-color: #353449;
-    border-bottom: 2px solid #005fe2;
-    color: #005fe2;
+    border-bottom: 2px solid #81b6ff;
+    color: #8fbeff;
     text-decoration: none;
 }
 
 main {
     flex-grow: 1;
+}
+
+.info-container {
+    text-align: center;
 }
 
 footer {
@@ -63,8 +68,12 @@ footer {
 
 a {
     color: #004488;
-    text-decoration: none;
     font-weight: 700;
+    text-shadow:
+    -1px 0px 0px black,  /* Left shadow */
+    1px 0px 0px black,   /* Right shadow */
+    0px -1px 0px black,  /* Top shadow */
+    0px 1px 0px black;   /* Bottom shadow */
 }
 
 a:hover {
@@ -86,18 +95,22 @@ h4:first-child, h5:first-child, h6:first-child {
     margin-top: 0;
 }
 
+
+
 p, main ul {
     padding: 0 0.5rem;
     margin: 1rem 0;
-    outline: #77bbff;
-    outline-width: thin;
-    text-decoration: underline;
     font-weight: 700;
     color: rgb(127, 153, 255);
+    text-shadow:
+    -1px 0px 0px black,  /* Left shadow */
+    1px 0px 0px black,   /* Right shadow */
+    0px -1px 0px black,  /* Top shadow */
+    0px 1px 0px black;   /* Bottom shadow */
 }
 
 main a {
-    color: rgb(50, 156, 255);
+    color: rgb(213, 208, 255);
 }
 
 main ul li {
@@ -106,6 +119,10 @@ main ul li {
 
 main ul li.list-table-header {
     padding-bottom: 0.5rem;
+}
+
+.form-container {
+    text-align: left;
 }
 
 footer {
