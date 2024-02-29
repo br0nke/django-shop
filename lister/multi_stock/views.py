@@ -49,4 +49,4 @@ def listing_search(request: HttpRequest) -> HttpResponse:
         )
 
     context = {'listing_search': listing_list}
-    return render(request, 'listing_search.html', context)
+    return render(request, 'multi_stock/listing_search.html', context)
